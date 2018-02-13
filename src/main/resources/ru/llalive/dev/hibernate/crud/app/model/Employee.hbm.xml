@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 13.02.2018 22:14:28 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ru.llalive.dev.hibernate.crud.app.model.Employee" table="employee" catalog="hibernate_crud" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="firstName" type="string">
+            <column name="first_name" length="30" />
+        </property>
+        <property name="lastName" type="string">
+            <column name="last_name" length="30" />
+        </property>
+        <property name="salary" type="java.lang.Integer">
+            <column name="salary" />
+        </property>
+        <set name="phones" table="phone" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="employee_id" />
+            </key>
+            <one-to-many class="ru.llalive.dev.hibernate.crud.app.model.Phone" />
+        </set>
+    </class>
+</hibernate-mapping>
